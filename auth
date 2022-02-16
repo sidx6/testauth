@@ -1,0 +1,19 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import unittest
+
+opt=Options()
+
+driver = webdriver.Chrome()
+driver.get('https://tv.kyivstar.ua/ru/')
+#login by fttb
+driver.find_element(By.XPATH,'/html/body/vd-root/vd-navbar/div[1]/div[8]/button/span').click()
+driver.find_element(By.XPATH,'//*[@id="cdk-overlay-0"]/vd-login-rightdrawer/div/div/vd-login-rightdrawer-form/vd-tabs/div/div[2]').click()
+driver.find_element(By.CSS_SELECTOR,'#cdk-overlay-0 > vd-login-rightdrawer > div > div > vd-login-rightdrawer-form > vd-tabs > section > div > vd-login-contract-form > div > form > vd-form-field:nth-child(1) > div').click()
+driver.find_element(By.CSS_SELECTOR,'#cdk-overlay-0 > vd-login-rightdrawer > div > div > vd-login-rightdrawer-form > vd-tabs > section > div > vd-login-contract-form > div > form > vd-form-field:nth-child(1) > div > div.vd-form-field__field-wrap > input').send_keys('123')
+#password
+driver.find_element(By.CSS_SELECTOR,'#cdk-overlay-0 > vd-login-rightdrawer > div > div > vd-login-rightdrawer-form > vd-tabs > section > div > vd-login-contract-form > div > form > vd-form-field:nth-child(2) > div > div.vd-form-field__field-wrap > input').click()
+driver.find_element(By.CSS_SELECTOR,'#cdk-overlay-0 > vd-login-rightdrawer > div > div > vd-login-rightdrawer-form > vd-tabs > section > div > vd-login-contract-form > div > form > vd-form-field:nth-child(2) > div > div.vd-form-field__field-wrap > input').send_keys('1234567')
+driver.find_element(By.CSS_SELECTOR,'#cdk-overlay-0 > vd-login-rightdrawer > div > div > vd-login-rightdrawer-form > vd-tabs > section > div > vd-login-contract-form > div > form > button.btn.btn-primary.btn_login.next-step').click()
+driver.quit
